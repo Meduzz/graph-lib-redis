@@ -41,8 +41,8 @@ class RedisStorageDelegate(val db:String, val split:String)(implicit redis:Redis
 		val futureEdges = redis
 			.smembers[String](db)
 			.map(items => items.map(str => {
-				val Array(start:String, rel:String, typ:String, end:String) = str.split(split)
-				Edge(Node(start), Relation(rel, typ), Node(end))
+				val Array(start:String, typ:String, end:String) = str.split(split)
+				Edge(Node(start), Relation(typ), Node(end))
 			}))
 			.map(edges => Seq.concat(edges))
 
@@ -52,6 +52,6 @@ class RedisStorageDelegate(val db:String, val split:String)(implicit redis:Redis
 	// TODO add support for union and other cool set operations
 
 	def edgeToString(edge:Edge):String = {
-		s"${edge.start.id}:${edge.relation.id}:${edge.relation.relType}:${edge.end.id}"
+		s"${edge.start.id}:${edge.relation.relType}:${edge.end.id}"
 	}
 }

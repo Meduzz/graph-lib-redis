@@ -1,6 +1,6 @@
 name := "Graph-Redis"
 
-version := "20161228"
+version := "20170529"
 
 scalaVersion := "2.11.7"
 
@@ -20,4 +20,4 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 
 libraryDependencies += "com.github.etaty" %% "rediscala" % "1.7.0"
 
-libraryDependencies += "se.kodiak.tools" %% "graph" % "20161228"
+libraryDependencies += "se.kodiak.tools" %% "graph" % "20170528"

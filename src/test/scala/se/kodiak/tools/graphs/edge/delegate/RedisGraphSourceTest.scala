@@ -34,8 +34,8 @@ class RedisGraphSourceTest extends FunSuite with BeforeAndAfterAll with ScalaFut
 			assert(members.nonEmpty)
 			assert(members.size == 1)
 
-			val Array(start:String, id:String, typ:String, end:String) = members.head.utf8String.split(":")
-			val edge = Edge(Node(start), Relation(id, typ), Node(end))
+			val Array(start:String, typ:String, end:String) = members.head.utf8String.split(":")
+			val edge = Edge(Node(start), Relation(typ), Node(end))
 
 			assert(result.equals(edge))
 		}
@@ -68,7 +68,7 @@ class RedisGraphSourceTest extends FunSuite with BeforeAndAfterAll with ScalaFut
 	def addOne():Edge = {
 		val first = Node("1")
 		val second = Node("2")
-		val relation = Relation("1", "SPAM")
+		val relation = Relation("SPAM")
 		edges.add(first, relation, second)
 	}
 
