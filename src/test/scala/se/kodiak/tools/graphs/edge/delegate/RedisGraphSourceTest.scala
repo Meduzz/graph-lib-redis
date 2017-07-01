@@ -77,5 +77,6 @@ class RedisGraphSourceTest extends FunSuite with BeforeAndAfterAll with ScalaFut
 		redis.flushall()
 		redis.quit()
 		system.shutdown()
+		edges.close()
 	}
 }

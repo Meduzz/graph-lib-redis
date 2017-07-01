@@ -54,4 +54,6 @@ class RedisStorageDelegate(val db:String, val split:String)(implicit redis:Redis
 	def edgeToString(edge:Edge):String = {
 		s"${edge.start.id}:${edge.relation.relType}:${edge.end.id}"
 	}
+
+	override def close():Unit = redis.shutdown()
 }
